@@ -1,0 +1,39 @@
+1. Real Photos of Your Work — Replace the stock images with actual photos of your completed projects. Customers trust real work far more than generic photos.
+2. WhatsApp Chat Popup — A small popup after 5 seconds saying "Hi! Need a free home design consultation?" with a WhatsApp button. Very effective on mobile.
+3. Price Range Section — Even a rough starting price (e.g. "Kitchen Design starting from ₹25,000") builds trust and filters serious customers.
+4. Before & After Slider — Show a room before and after your work. This is one of the most convincing things for interior design clients.
+
+ Trust Builders
+
+1. Video Section — A short reel or walkthrough video of a completed project. You can embed it directly from Instagram or YouTube.
+2. Certifications / Awards — If you have any badges, partner logos (Asian Paints, etc.), or media mentions, add them as a logo strip.
+3. FAQ Section — Answer common questions like "How long does a kitchen take?", "Do you work outside UP?", "What's your payment process?"
+
+4.Sticky Bottom Bar on Mobile — A fixed bar at the bottom of the phone screen with two buttons: 📞 Call and 💬 WhatsApp. This alone can double your inquiries.
+
+Business: Qasim Home Decoration
+Instagram: @qasim_home_decoration1
+WhatsApp: +91 81759 85709
+Address: Chaman Rd, Jummanpura, Mod, Kopaganj, UP 275305
+Cities: Mau, Ghazipur, Varanasi, Azamgarh, Lucknow
+
+How to Update Image Links in Your HTML
+Replace the long Unsplash URLs with short local paths like this:
+Before (current):
+src="https://images.unsplash.com/photo-1618221195710..."
+After (local):
+src="assets/images/hero.jpg"
+
+
+photo-1618221195710	assets/images/hero.jpg
+photo-1556909114	assets/images/kitchen.jpg
+photo-1555041469	assets/images/living-room.jpg
+photo-1616594039964	assets/images/bedroom.jpg
+photo-1617817546738	assets/images/mirror.jpg
+photo-1540518614846	assets/images/bed.jpg
+photo-1484101403633	assets/images/before-1.jpg
+photo-1600210492493	assets/images/after-1.jpg
+photo-1585128792020	assets/images/before-2.jpg
+photo-1560185893	assets/images/project-2.jpg
+photo-1586023492125assets	/images/project-4.jpg
+photo-1556909114	assets/images/project-3.jpg

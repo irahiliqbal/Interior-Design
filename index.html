@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Qasim Home Decoration – Luxury Interior Design in Mau, Varanasi, Ghazipur</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
 
   <!-- SEO Meta Tags -->
   <meta name="description" content="Qasim Home Decoration — luxury interior design services in Mau, Ghazipur, Varanasi, Azamgarh & Lucknow. 500+ projects, 8+ years experience. Book a free consultation today." />
@@ -166,19 +169,90 @@
 
     /* ── 5. PROJECTS ── */
     #projects { padding: var(--pad); background: #161616; }
-    .projects-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(12,1fr); gap: 16px; }
-    .proj-card { position: relative; overflow: hidden; border-radius: 2px; }
-    .proj-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; display: block; }
-    .proj-card:hover img { transform: scale(1.06); }
-    .proj-overlay { position: absolute; inset: 0; background: linear-gradient(to top,rgba(0,0,0,0.85) 0%,transparent 55%); opacity: 0; transition: opacity 0.4s; display: flex; flex-direction: column; justify-content: flex-end; padding: 24px 20px; }
-    .proj-card:hover .proj-overlay { opacity: 1; }
-    .proj-cat { font-size: 0.62rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
-    .proj-name { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; }
-    .proj-loc { font-size: 0.72rem; color: rgba(255,255,255,0.55); margin-top: 4px; }
-    .proj-card.big  { grid-column: span 7; min-height: 420px; }
-    .proj-card.med  { grid-column: span 5; min-height: 420px; }
-    .proj-card.sm   { grid-column: span 4; min-height: 280px; }
-    .proj-card.wide { grid-column: span 8; min-height: 280px; }
+    .proj-wrap { max-width: 1200px; margin: 0 auto; }
+
+    /* Tab switcher */
+    .proj-tabs { display: flex; gap: 0; justify-content: center; margin-bottom: 52px; border: 1px solid rgba(201,169,110,0.2); width: fit-content; margin-left: auto; margin-right: auto; }
+    .proj-tab { padding: 12px 36px; font-size: 0.68rem; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; background: none; border: none; color: var(--text-muted); transition: all 0.3s; position: relative; }
+    .proj-tab::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--gold); transform: scaleX(0); transition: transform 0.3s; }
+    .proj-tab.active { color: var(--gold); background: rgba(201,169,110,0.06); }
+    .proj-tab.active::after { transform: scaleX(1); }
+    .proj-tab:hover { color: var(--gold-light); }
+
+    /* Tab panels */
+    .proj-panel { display: none; }
+    .proj-panel.active { display: block; }
+
+    /* ── PHOTO GRID ── */
+    .proj-photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto;
+      gap: 12px;
+    }
+    .proj-photo-card { position: relative; overflow: hidden; cursor: pointer; }
+    .proj-photo-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; }
+    .proj-photo-card:hover img { transform: scale(1.06); }
+    .proj-photo-card.tall { grid-row: span 2; }
+    .proj-photo-card.wide { grid-column: span 2; }
+    .proj-photo-card:not(.tall) { aspect-ratio: 4/3; }
+    .proj-photo-card.tall { min-height: 500px; }
+    .proj-info { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, transparent 55%); opacity: 0; transition: opacity 0.35s; display: flex; flex-direction: column; justify-content: flex-end; padding: 22px 18px; }
+    .proj-photo-card:hover .proj-info { opacity: 1; }
+    .proj-cat { font-size: 0.58rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 5px; }
+    .proj-name { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; color: #fff; }
+    .proj-loc { font-size: 0.68rem; color: rgba(255,255,255,0.5); margin-top: 4px; }
+
+    /* ── REELS / VIDEO GRID ── */
+    .proj-reels-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .reel-card {
+      position: relative; border-radius: 12px; overflow: hidden;
+      aspect-ratio: 9/16; background: #1a1a1a; cursor: pointer;
+    }
+    .reel-card video {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.4s ease;
+    }
+    .reel-card:hover video { transform: scale(1.03); }
+    .reel-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.1) 50%, transparent 100%);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 18px 14px; transition: background 0.3s;
+    }
+    .reel-card:hover .reel-overlay { background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.2) 55%, transparent 100%); }
+    .reel-play {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      width: 48px; height: 48px; border-radius: 50%;
+      background: rgba(255,255,255,0.15); backdrop-filter: blur(6px);
+      border: 1.5px solid rgba(255,255,255,0.4);
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.3s; pointer-events: none;
+    }
+    .reel-card:hover .reel-play { background: rgba(201,169,110,0.3); border-color: var(--gold); transform: translate(-50%,-50%) scale(1.1); }
+    .reel-card.playing .reel-play { opacity: 0; }
+    .reel-play::after { content: ''; width: 0; height: 0; border-style: solid; border-width: 8px 0 8px 16px; border-color: transparent transparent transparent #fff; margin-left: 3px; }
+    .reel-cat { font-size: 0.55rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+    .reel-title { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: #fff; line-height: 1.3; }
+    .reel-loc { font-size: 0.62rem; color: rgba(255,255,255,0.5); margin-top: 4px; }
+    .reel-duration {
+      position: absolute; top: 12px; right: 12px;
+      background: rgba(0,0,0,0.55); backdrop-filter: blur(4px);
+      font-size: 0.6rem; color: #fff; padding: 3px 8px; border-radius: 20px;
+      letter-spacing: 1px;
+    }
+    .reel-ig-cta {
+      margin-top: 40px; text-align: center;
+      padding: 28px; border: 1px solid rgba(201,169,110,0.15);
+      background: rgba(201,169,110,0.03);
+    }
+    .reel-ig-cta p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.8; }
+    .reel-ig-cta a { color: var(--gold); text-decoration: none; font-weight: 600; }
+    .reel-ig-cta a:hover { color: var(--gold-light); }
 
     /* ── 6. VIDEO ── */
     #video-section { padding: var(--pad); background: var(--cream); }
@@ -307,8 +381,9 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
       .services-grid { grid-template-columns: repeat(2,1fr); }
-      .projects-grid { grid-template-columns: repeat(2,1fr); }
-      .proj-card.big,.proj-card.med,.proj-card.sm,.proj-card.wide { grid-column: span 1; min-height: 260px; }
+      .proj-photo-grid { grid-template-columns: 1fr 1fr; }
+      .proj-photo-card.tall { min-height: 320px; }
+      .proj-reels-grid { grid-template-columns: repeat(2, 1fr); }
       .process-steps { grid-template-columns: repeat(2,1fr); }
       .testimonials-grid { grid-template-columns: repeat(2,1fr); }
       .footer-inner { grid-template-columns: 1fr 1fr; }
@@ -337,8 +412,10 @@
       .service-desc { opacity: 1; transform: translateY(0); }
       .service-line { width: 30px; }
       .ba-pairs { grid-template-columns: 1fr; }
-      .projects-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
-      .proj-card.big,.proj-card.med,.proj-card.sm,.proj-card.wide { grid-column: span 1; min-height: 180px; }
+      .proj-photo-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .proj-photo-card.wide { grid-column: span 1; }
+      .proj-photo-card.tall { min-height: 260px; }
+      .proj-reels-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
       .process-steps { grid-template-columns: 1fr 1fr; gap: 16px; }
       .testimonials-grid { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; }
@@ -354,8 +431,11 @@
       .btn-gold, .btn-outline { width: 100%; max-width: 240px; text-align: center; padding: 10px 20px; font-size: 0.62rem; }
       .hero-stats { flex-wrap: wrap; }
       .hero-stat { flex: 1 0 50%; border-bottom: 1px solid rgba(255,255,255,0.08); }
-      .projects-grid { grid-template-columns: 1fr; }
-      .proj-card.big,.proj-card.med,.proj-card.sm,.proj-card.wide { min-height: 220px; }
+      .proj-photo-grid { grid-template-columns: 1fr; }
+      .proj-photo-card.tall, .proj-photo-card.wide { grid-column: span 1; grid-row: span 1; min-height: 260px; }
+      .proj-reels-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+      .proj-tabs { width: 100%; }
+      .proj-tab { flex: 1; padding: 12px 16px; }
       .process-steps { grid-template-columns: 1fr; }
       .social-btns { flex-direction: column; }
       .social-btn { justify-content: center; }
@@ -627,66 +707,174 @@ We focus on quality, detail, and your vision to create spaces you’ll enjoy eve
 <!-- ═══════════════════════════════════════════════════════════
      SECTION 5 — PROJECTS
 ══════════════════════════════════════════════════════════════ -->
-<!-- <section id="projects">
-  <div class="section-header reveal">
-    <span class="section-tag">✦ Our Finished Work</span>
-    <h2 class="section-title">Real Projects, <em>Real Homes</em></h2>
-    <div class="divider"></div>
-    <p class="section-sub">Each project tells a story of transformation. A glimpse of what we've created for our valued clients.</p>
-  </div>
-  <div class="projects-grid">
-    <div class="proj-card big reveal"><img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=900&q=80" alt="Living room" loading="lazy"/><div class="proj-overlay"><div class="proj-cat">Living Room</div><div class="proj-name">The Royal Retreat</div><div class="proj-loc">📍 Varanasi, UP</div></div></div>
-    <div class="proj-card med reveal"><img src="https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?w=700&q=80" alt="Bedroom" loading="lazy"/><div class="proj-overlay"><div class="proj-cat">Bedroom</div><div class="proj-name">Serene Sleep Suite</div><div class="proj-loc">📍 Lucknow, UP</div></div></div>
-    <div class="proj-card sm reveal"><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=700&q=80" alt="Kitchen" loading="lazy"/><div class="proj-overlay"><div class="proj-cat">Kitchen</div><div class="proj-name">Chef's Paradise</div><div class="proj-loc">📍 Mau, UP</div></div></div>
-    <div class="proj-card wide reveal"><img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=900&q=80" alt="Interior" loading="lazy"/><div class="proj-overlay"><div class="proj-cat">Full Home Design</div><div class="proj-name">Golden Harmony Home</div><div class="proj-loc">📍 Azamgarh, UP</div></div></div>
-    <div class="proj-card sm reveal"><img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?w=700&q=80" alt="Bed" loading="lazy"/><div class="proj-overlay"><div class="proj-cat">Luxury Bed</div><div class="proj-name">Velvet Dream Suite</div><div class="proj-loc">📍 Ghazipur, UP</div></div></div>
-    <div class="proj-card wide reveal"><img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=900&q=80" alt="Interior" loading="lazy"/><div class="proj-overlay"><div class="proj-cat">Complete Interior</div><div class="proj-name">The Grand Palazzo</div><div class="proj-loc">📍 Varanasi, UP</div></div></div>
-    <div class="proj-card sm reveal"><img src="https://images.unsplash.com/photo-1617817546738-01a4d1d1b614?w=700&q=80" alt="Mirror" loading="lazy"/><div class="proj-overlay"><div class="proj-cat">Mirrors & Décor</div><div class="proj-name">Mirror Elegance</div><div class="proj-loc">📍 Lucknow, UP</div></div></div>
-  </div>
-</section> -->
+<section id="projects">
+  <div class="proj-wrap">
 
-<!-- ═══════════════════════════════════════════════════════════
-     SECTION 6 — VIDEO
-══════════════════════════════════════════════════════════════ -->
-<!-- <section id="video-section">
-  <div class="section-header reveal">
-    <span class="section-tag">✦ Watch Our Work</span>
-    <h2 class="section-title">See the <em>Magic</em> Unfold</h2>
-    <div class="divider"></div>
-    <p class="section-sub" style="color:#666;">Watch our team transform ordinary spaces into extraordinary homes. Every detail, crafted with love.</p>
-  </div>
-  <div class="video-grid reveal">
-    <div class="video-main" id="videoMain">
-      <div class="video-placeholder" id="videoPlaceholder" onclick="playVideo()">
-        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1000&q=80" alt="Video thumbnail" id="videoThumbImg"/>
-        <div class="video-play-btn"></div>
-        <p class="video-placeholder-text">▶ &nbsp; Watch Full Project Tour</p>
+    <!-- Header -->
+    <div class="section-header reveal">
+      <span class="section-tag">✦ Our Finished Work</span>
+      <h2 class="section-title">Real Projects, <em>Real Homes</em></h2>
+      <div class="divider"></div>
+      <p class="section-sub">Each project tells a story of transformation. Browse our photos and watch our reels.</p>
+    </div>
+
+    <!-- Tabs -->
+    <div class="proj-tabs reveal">
+      <button class="proj-tab active" onclick="switchTab('photos', this)">📸 &nbsp;Photos</button>
+      <button class="proj-tab" onclick="switchTab('videos', this)">🎬 &nbsp;Reels</button>
+    </div>
+
+    <!-- ── PHOTOS PANEL ── -->
+    <div class="proj-panel active" id="panel-photos">
+      <div class="proj-photo-grid">
+
+        <div class="proj-photo-card tall reveal">
+          <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=900&q=80" alt="Living Room" loading="lazy"/>
+          <div class="proj-info"><div class="proj-cat">Living Room</div><div class="proj-name">The Royal Retreat</div><div class="proj-loc">📍 Varanasi, UP</div></div>
+        </div>
+
+        <div class="proj-photo-card reveal">
+          <img src="https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?w=700&q=80" alt="Bedroom" loading="lazy"/>
+          <div class="proj-info"><div class="proj-cat">Bedroom</div><div class="proj-name">Serene Sleep Suite</div><div class="proj-loc">📍 Lucknow, UP</div></div>
+        </div>
+
+        <div class="proj-photo-card reveal">
+          <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=700&q=80" alt="Kitchen" loading="lazy"/>
+          <div class="proj-info"><div class="proj-cat">Kitchen</div><div class="proj-name">Chef's Paradise</div><div class="proj-loc">📍 Mau, UP</div></div>
+        </div>
+
+        <div class="proj-photo-card wide reveal">
+          <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=900&q=80" alt="Interior" loading="lazy"/>
+          <div class="proj-info"><div class="proj-cat">Full Home Design</div><div class="proj-name">Golden Harmony Home</div><div class="proj-loc">📍 Azamgarh, UP</div></div>
+        </div>
+
+        <div class="proj-photo-card reveal">
+          <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?w=700&q=80" alt="Luxury Bed" loading="lazy"/>
+          <div class="proj-info"><div class="proj-cat">Luxury Bed</div><div class="proj-name">Velvet Dream Suite</div><div class="proj-loc">📍 Ghazipur, UP</div></div>
+        </div>
+
+        <div class="proj-photo-card reveal">
+          <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=700&q=80" alt="Interior" loading="lazy"/>
+          <div class="proj-info"><div class="proj-cat">Complete Interior</div><div class="proj-name">The Grand Palazzo</div><div class="proj-loc">📍 Varanasi, UP</div></div>
+        </div>
+
+        <div class="proj-photo-card reveal">
+          <img src="https://images.unsplash.com/photo-1617817546738-01a4d1d1b614?w=700&q=80" alt="Mirror" loading="lazy"/>
+          <div class="proj-info"><div class="proj-cat">Mirrors & Décor</div><div class="proj-name">Mirror Elegance</div><div class="proj-loc">📍 Lucknow, UP</div></div>
+        </div>
+
+        <div class="proj-photo-card wide reveal">
+          <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=900&q=80" alt="Sofa" loading="lazy"/>
+          <div class="proj-info"><div class="proj-cat">Sofa & Lounge</div><div class="proj-name">Premium Comfort Corner</div><div class="proj-loc">📍 Mau, UP</div></div>
+        </div>
+
       </div>
     </div>
-    <div class="video-thumbs">
-      <div class="video-thumb active" onclick="selectVideo(this,'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=400&q=80')">
-        <img class="video-thumb-img" src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=400&q=80" alt="Project 1"/>
-        <div><div class="video-thumb-title">Full Home Makeover – Varanasi</div><div class="video-thumb-desc">Complete 3BHK transformation including living room, kitchen & bedrooms.</div><span class="video-thumb-tag">▶ Full Tour</span></div>
+
+    <!-- ── REELS / VIDEOS PANEL ── -->
+    <div class="proj-panel" id="panel-videos">
+      <div class="proj-reels-grid">
+
+        <!-- Reel 1 -->
+<div class="reel-card reveal" id="reel1">
+  <video 
+    src="videos/reel1.mp4"
+    loop 
+    playsinline 
+    muted
+    preload="metadata">
+  </video>
+
+  <div class="reel-overlay">
+    <div class="reel-cat">Living Room</div>
+    <div class="reel-title">Royal Living</div>
+    <div class="reel-loc">📍 Varanasi</div>
+  </div>
+
+  <div class="reel-play"></div>
+  <div class="reel-duration">0:14</div>
+</div>
+
+
+<!-- Reel 2 -->
+<div class="reel-card reveal" id="reel2">
+  <video 
+    src="videos/reel2.mp4"
+    loop 
+    playsinline 
+    muted
+    preload="metadata">
+  </video>
+
+  <div class="reel-overlay">
+    <div class="reel-cat">Kitchen</div>
+    <div class="reel-title">Modular Kitchen</div>
+    <div class="reel-loc">📍 Mau</div>
+  </div>
+
+  <div class="reel-play"></div>
+  <div class="reel-duration">0:41</div>
+</div>
+
+
+<!-- Reel 3 -->
+<div class="reel-card reveal" id="reel3">
+  <video 
+    src="videos/reel3.mp4"
+    loop 
+    playsinline 
+    muted
+    preload="metadata">
+  </video>
+
+  <div class="reel-overlay">
+    <div class="reel-cat">Bedroom</div>
+    <div class="reel-title">Luxury Bedroom Tour</div>
+    <div class="reel-loc">📍 Lucknow</div>
+  </div>
+
+  <div class="reel-play"></div>
+  <div class="reel-duration">0:47</div>
+</div>
+
+
+<!-- Reel 4 -->
+<div class="reel-card reveal" id="reel4">
+  <video 
+    src="videos/reel4.mp4"
+    loop 
+    playsinline 
+    muted
+    preload="metadata">
+  </video>
+
+  <div class="reel-overlay">
+    <div class="reel-cat">Full Home</div>
+    <div class="reel-title">Modern & Luxury Home</div>
+    <div class="reel-loc">📍 Azamgarh</div>
+  </div>
+
+  <div class="reel-play"></div>
+  <div class="reel-duration">0:17</div>
+</div>
+
       </div>
-      <div class="video-thumb" onclick="selectVideo(this,'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&q=80')">
-        <img class="video-thumb-img" src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&q=80" alt="Project 2"/>
-        <div><div class="video-thumb-title">Modular Kitchen Build – Mau</div><div class="video-thumb-desc">Watch our craftsmen build a stunning modular kitchen from scratch.</div><span class="video-thumb-tag">▶ Process Video</span></div>
-      </div>
-      <div class="video-thumb" onclick="selectVideo(this,'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=400&q=80')">
-        <img class="video-thumb-img" src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=400&q=80" alt="Project 3"/>
-        <div><div class="video-thumb-title">Luxury Bedroom Reveal – Lucknow</div><div class="video-thumb-desc">Dramatic before & after reveal of a royal bedroom transformation.</div><span class="video-thumb-tag">▶ Reveal Video</span></div>
-      </div>
-      <div class="video-ig-note">
-        <p>📱 <strong style="color:var(--dark);">More on Instagram!</strong><br>Follow <a href="https://www.instagram.com/qasim_home_decoration1" target="_blank">@qasim_home_decoration1</a> for daily design reels, project tours & behind-the-scenes content.</p>
+
+      <!-- Instagram CTA -->
+      <div class="reel-ig-cta reveal">
+        <p>📱 <strong style="color:var(--gold);">More reels on Instagram!</strong><br>
+        Follow <a href="https://www.instagram.com/qasim_home_decoration1" target="_blank">@qasim_home_decoration1</a> for daily design reels, project tours & behind-the-scenes content.</p>
       </div>
     </div>
+
   </div>
-</section> -->
+</section>
+
 
 <!-- ═══════════════════════════════════════════════════════════
      SECTION 7 — PROCESS
 ══════════════════════════════════════════════════════════════ -->
-<!-- <section id="process">
+<section id="process">
   <div class="section-header reveal">
     <span class="section-tag">✦ How We Work</span>
     <h2 class="section-title">Our Simple <em>4-Step</em> Process</h2>
@@ -699,12 +887,12 @@ We focus on quality, detail, and your vision to create spaces you’ll enjoy eve
     <div class="process-step reveal"><div class="step-num">03</div><div class="step-icon">🔨</div><h4>Expert Execution</h4><p>Skilled craftsmen bring the design to life with precision, premium materials, and strict timelines — zero compromise.</p></div>
     <div class="process-step reveal"><div class="step-num">04</div><div class="step-icon">🏠</div><h4>Grand Reveal</h4><p>We hand over your beautifully transformed home with a full walkthrough. Your satisfaction is our ultimate goal.</p></div>
   </div>
-</section> -->
+</section>
 
 <!-- ═══════════════════════════════════════════════════════════
      SECTION 8 — TESTIMONIALS
 ══════════════════════════════════════════════════════════════ -->
-<!-- <section id="testimonials">
+<section id="testimonials">
   <div class="section-header reveal">
     <span class="section-tag">✦ Client Reviews</span>
     <h2 class="section-title">Words From Our <em>Happy Clients</em></h2>
@@ -712,19 +900,21 @@ We focus on quality, detail, and your vision to create spaces you’ll enjoy eve
     <p class="section-sub">Real experiences, real transformations — from families across Uttar Pradesh.</p>
   </div>
   <div class="testimonials-grid">
-    <div class="testi-card reveal"><span class="quote-icon">"</span><div class="testi-stars">★★★★★</div><p class="testi-text">Qasim bhai ne hamara ghar bilkul sapno jaisa bana diya! Kitchen se lekar bedroom tak sab kuch perfect hai. Quality aur design dono mein best hain. Highly recommended!</p><div class="testi-author"><img class="testi-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt=""/><div><div class="testi-name">Mohammad Arif</div><div class="testi-city">📍 Varanasi, UP</div></div></div></div>
-    <div class="testi-card reveal"><span class="quote-icon">"</span><div class="testi-stars">★★★★★</div><p class="testi-text">The bedroom design exceeded all my expectations. The luxury bed they crafted is absolutely stunning. Very professional team, on-time delivery, and great after-service support!</p><div class="testi-author"><img class="testi-avatar" src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=100&q=80" alt=""/><div><div class="testi-name">Rohit Sharma</div><div class="testi-city">📍 Lucknow, UP</div></div></div></div>
-    <div class="testi-card reveal"><span class="quote-icon">"</span><div class="testi-stars">★★★★★</div><p class="testi-text">Humne apna poora ghar Qasim Home Decoration se design karwaya. Budget mein itna sundar kaam! Sofa, mirror aur living room sab ek dum zabardast. Bahut shukriya!</p><div class="testi-author"><img class="testi-avatar" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt=""/><div><div class="testi-name">Nazia Fatima</div><div class="testi-city">📍 Azamgarh, UP</div></div></div></div>
-    <div class="testi-card reveal"><span class="quote-icon">"</span><div class="testi-stars">★★★★★</div><p class="testi-text">Got my modular kitchen done. The quality of material is top-notch. The team completed the work ahead of schedule. Very happy with the result!</p><div class="testi-author"><img class="testi-avatar" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80" alt=""/><div><div class="testi-name">Suresh Kumar</div><div class="testi-city">📍 Mau, UP</div></div></div></div>
-    <div class="testi-card reveal"><span class="quote-icon">"</span><div class="testi-stars">★★★★★</div><p class="testi-text">The decorative mirrors and sofa design transformed our living room completely. Neighbors keep complimenting us. Qasim sahab ka kaam bilkul alag level ka hai!</p><div class="testi-author"><img class="testi-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt=""/><div><div class="testi-name">Anjali Verma</div><div class="testi-city">📍 Ghazipur, UP</div></div></div></div>
-    <div class="testi-card reveal"><span class="quote-icon">"</span><div class="testi-stars">★★★★★</div><p class="testi-text">Professional, punctual, and truly passionate. From consultation to final reveal, the experience was seamless. My home looks like a 5-star hotel now!</p><div class="testi-author"><img class="testi-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80" alt=""/><div><div class="testi-name">Asif Khan</div><div class="testi-city">📍 Varanasi, UP</div></div></div></div>
+    <div class="testi-card reveal"><span class="quote-icon">"</span><div class="testi-stars">★★★★★</div><p class="testi-text">Very good work in interior Design House, Shop, Restaurant All Kind of work in Modification.</p><div class="testi-author"><img class="testi-avatar" src="assets\testi1.png" alt=""/><div><div class="testi-name">Ali Salman</div><div class="testi-city">📍 Varanasi, UP</div></div></div></div>
+    <div class="testi-card reveal"><span class="quote-icon">"</span><div class="testi-stars">★★★★★</div><p class="testi-text">Best interior design . thanks qasim home decoration team!</p><div class="testi-author"><img class="testi-avatar" src="assets\testi2.png" alt=""/><div><div class="testi-name">Rohit Shiva</div><div class="testi-city">📍 Mau, UP</div></div></div></div>
+    <div class="testi-card reveal"><span class="quote-icon">"</span><div class="testi-stars">★★★★★</div><p class="testi-text">Best in town for all your Interior Decor needs.</p><div class="testi-author"><img class="testi-avatar" src="assets\testi3.png" alt=""/><div><div class="testi-name">Rahil Iqbal</div><div class="testi-city">📍 Ghazipur, UP</div></div></div></div>
+    <div class="testi-card reveal"><span class="quote-icon">"</span><div class="testi-stars">★★★★★</div><p class="testi-text">Best shop in Mau city for interior & exterior works.
+Owner is very cooperative</p><div class="testi-author"><img class="testi-avatar" src="assets\testi4.png" alt=""/><div><div class="testi-name">Muddassir Afzal</div><div class="testi-city">📍 Mau, UP</div></div></div></div>
+    <div class="testi-card reveal"><span class="quote-icon">"</span><div class="testi-stars">★★★★★</div><p class="testi-text">Get your work done here. The service is excellent. The interior design is excellent. The quality and materials are excellent. You can get your work done here. You'll get your money's worth. # Genuine Rates
+# Fast Service</p><div class="testi-author"><img class="testi-avatar" src="assets\testi5.png" alt=""/><div><div class="testi-name">Pramod Kumar</div><div class="testi-city">📍 Mau, UP</div></div></div></div>
+    <div class="testi-card reveal"><span class="quote-icon">"</span><div class="testi-stars">★★★★★</div><p class="testi-text">You got the work done from here, their work is very good, it is professional work, the quality is very best.</p><div class="testi-author"><img class="testi-avatar" src="assets\testi6.png" alt=""/><div><div class="testi-name">Md Parwez Ansari</div><div class="testi-city">📍Mau, UP</div></div></div></div>
   </div>
-</section> -->
+</section>
 
 <!-- ═══════════════════════════════════════════════════════════
      SECTION 9 — FAQ
 ══════════════════════════════════════════════════════════════ -->
-<!-- <section id="faq">
+<section id="faq">
   <div class="section-header reveal">
     <span class="section-tag">✦ Common Questions</span>
     <h2 class="section-title">Frequently Asked <em>Questions</em></h2>
@@ -732,24 +922,24 @@ We focus on quality, detail, and your vision to create spaces you’ll enjoy eve
     <p class="section-sub">Everything you need to know before getting started with us.</p>
   </div>
   <div class="faq-wrap">
-    <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">How much does a complete home interior design cost?</span><span class="faq-icon">+</span></button><div class="faq-a">The cost depends on the size of your home, materials chosen, and design complexity. We offer budget-friendly packages starting from ₹15,000 for individual rooms. We provide a FREE detailed estimate after a consultation — no hidden charges ever.</div></div>
+    <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">How much does a complete home interior design cost?</span><span class="faq-icon">+</span></button><div class="faq-a">The cost depends on the size of your home, materials chosen, and design complexity. We offer budget-friendly packages, Book site visit for detailed estimate.</div></div>
     <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">How long does it take to complete a kitchen or bedroom design?</span><span class="faq-icon">+</span></button><div class="faq-a">A single room typically takes 7–15 working days. Full home makeovers take 25–45 days. We always give you a confirmed timeline before starting and stick to it.</div></div>
     <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">Do you work outside Kopaganj? Which cities do you cover?</span><span class="faq-icon">+</span></button><div class="faq-a">Yes! We serve Mau, Ghazipur, Varanasi, Azamgarh, and Lucknow. For other UP cities, contact us — we may accommodate depending on the project size.</div></div>
     <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">What materials do you use? Are they durable?</span><span class="faq-icon">+</span></button><div class="faq-a">We use premium-grade materials including BWR/BWP plywood, PU finish shutters, Hettich hardware, and branded laminates. Every piece is built to last 15+ years with proper care.</div></div>
     <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">Do you provide a warranty on your work?</span><span class="faq-icon">+</span></button><div class="faq-a">Yes, we provide a 1-year warranty on all workmanship. If anything needs adjustment after installation, we fix it at no extra cost.</div></div>
-    <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">How do I get started? Is there a consultation fee?</span><span class="faq-icon">+</span></button><div class="faq-a">Just WhatsApp us at +91 81759 85709. We'll schedule a FREE home visit or video call and send you a detailed design plan and cost estimate — no fee, no obligation.</div></div>
+    <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">How do I get started? Is there a consultation fee?</span><span class="faq-icon">+</span></button><div class="faq-a">Just WhatsApp us at +91 81759 85709. We'll schedule a home visit and send you a detailed design plan at minimal cost.</div></div>
   </div>
-</section> -->
+</section>
 
 <!-- ═══════════════════════════════════════════════════════════
      SECTION 10 — CONTACT
 ══════════════════════════════════════════════════════════════ -->
-<!-- <section id="contact">
+<section id="contact">
   <div class="section-header reveal">
     <span class="section-tag">✦ Get In Touch</span>
     <h2 class="section-title">Let's Build Your <em>Dream Home</em></h2>
     <div class="divider"></div>
-    <p class="section-sub" style="color:#666;">Ready to transform your space? A free consultation is just one tap away.</p>
+    <p class="section-sub" style="color:#666;">Ready to transform your space? Book Consultation Now.</p>
   </div>
   <div class="contact-grid">
     <div class="contact-info reveal">
@@ -783,7 +973,7 @@ We focus on quality, detail, and your vision to create spaces you’ll enjoy eve
       </div>
     </div>
   </div>
-</section> -->
+</section>
 
 <!-- ═══ FOOTER ════════════════════════════════════════════════ -->
 <footer>
@@ -981,7 +1171,33 @@ We focus on quality, detail, and your vision to create spaces you’ll enjoy eve
     });
   });
 
-  // ── Active section highlight in nav ──
+  // ── Project tabs ──
+  function switchTab(tab, btn) {
+    document.querySelectorAll('.proj-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.proj-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-' + tab).classList.add('active');
+    // pause all videos when switching away
+    document.querySelectorAll('.reel-card video').forEach(v => { v.pause(); v.closest('.reel-card').classList.remove('playing'); });
+  }
+
+  // ── Reel tap to play/pause ──
+  document.querySelectorAll('.reel-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const video = card.querySelector('video');
+      if (video.paused) {
+        // pause all others first
+        document.querySelectorAll('.reel-card video').forEach(v => { v.pause(); v.closest('.reel-card').classList.remove('playing'); });
+        video.play();
+        card.classList.add('playing');
+      } else {
+        video.pause();
+        card.classList.remove('playing');
+      }
+    });
+  });
+
+
   const sections   = document.querySelectorAll('section[id]');
   const navLinks   = document.querySelectorAll('.nav-links a');
   const sectionObs = new IntersectionObserver((entries) => {
