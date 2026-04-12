@@ -87,8 +87,8 @@
     .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.38) 60%, rgba(0,0,0,0.65) 100%); }
     .hero-overlay::after { content: ''; position: absolute; inset: 0; background: linear-gradient(105deg, transparent 35%, rgba(201,169,110,0.05) 50%, transparent 65%); animation: overlaySweep 9s 3s ease-in-out infinite; }
     @keyframes overlaySweep { 0%,100% { transform: translateX(-120%); } 50% { transform: translateX(120%); } }
-    .particles { position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
-    .particle { position: absolute; border-radius: 50%; background: var(--gold); opacity: 0; animation: floatUp var(--dur) var(--delay) ease-in infinite; }
+   
+    
     @keyframes floatUp { 0% { opacity:0; transform:translateY(0) scale(1); } 15% { opacity:0.55; } 85% { opacity:0.2; } 100% { opacity:0; transform:translateY(-75vh) scale(0.2); } }
     .hero-corner { position: absolute; z-index: 2; width: 55px; height: 55px; opacity: 0; animation: cornerFade 1s 1.8s ease both; }
     @keyframes cornerFade { to { opacity: 0.45; } }
@@ -426,7 +426,7 @@
 <section id="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
-  <div class="particles" id="particles"></div>
+  
   <div class="hero-corner tl"></div>
   <div class="hero-corner tr"></div>
   <div class="hero-corner bl"></div>
@@ -740,14 +740,7 @@ Owner is very cooperative</p><div class="testi-author"><img class="testi-avatar"
   ham.addEventListener('click', () => { ham.classList.toggle('open'); mob.classList.toggle('open'); });
   function closeMobile() { ham.classList.remove('open'); mob.classList.remove('open'); }
 
-  // Particles
-  const particleContainer = document.getElementById('particles');
-  for (let i = 0; i < 24; i++) {
-    const p = document.createElement('div'); p.className = 'particle';
-    const s = Math.random() * 2.5 + 0.8;
-    p.style.cssText = `left:${Math.random()*100}%;bottom:${Math.random()*25}%;width:${s}px;height:${s}px;--dur:${7+Math.random()*11}s;--delay:${Math.random()*9}s;`;
-    particleContainer.appendChild(p);
-  }
+  
 
   // Counters
   function countUp(el, target, suffix, dur) {
