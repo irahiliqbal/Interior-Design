@@ -203,80 +203,8 @@
     .proj-name { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; color: #fff; }
     .proj-loc { font-size: 0.68rem; color: rgba(255,255,255,0.5); margin-top: 4px; }
 
-    /* ── REELS / VIDEO GRID ── */
-    .proj-reels-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
-    .reel-card {
-      position: relative; border-radius: 12px; overflow: hidden;
-      aspect-ratio: 9/16; background: #1a1a1a; cursor: pointer;
-    }
-    .reel-card video {
-      width: 100%; height: 100%; object-fit: cover; display: block;
-      transition: transform 0.4s ease;
-    }
-    .reel-card:hover video { transform: scale(1.03); }
-    .reel-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.1) 50%, transparent 100%);
-      display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 18px 14px; transition: background 0.3s;
-    }
-    .reel-card:hover .reel-overlay { background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.2) 55%, transparent 100%); }
-    .reel-play {
-      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-      width: 48px; height: 48px; border-radius: 50%;
-      background: rgba(255,255,255,0.15); backdrop-filter: blur(6px);
-      border: 1.5px solid rgba(255,255,255,0.4);
-      display: flex; align-items: center; justify-content: center;
-      transition: all 0.3s; pointer-events: none;
-    }
-    .reel-card:hover .reel-play { background: rgba(201,169,110,0.3); border-color: var(--gold); transform: translate(-50%,-50%) scale(1.1); }
-    .reel-card.playing .reel-play { opacity: 0; }
-    .reel-play::after { content: ''; width: 0; height: 0; border-style: solid; border-width: 8px 0 8px 16px; border-color: transparent transparent transparent #fff; margin-left: 3px; }
-    .reel-cat { font-size: 0.55rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
-    .reel-title { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: #fff; line-height: 1.3; }
-    .reel-loc { font-size: 0.62rem; color: rgba(255,255,255,0.5); margin-top: 4px; }
-    .reel-duration {
-      position: absolute; top: 12px; right: 12px;
-      background: rgba(0,0,0,0.55); backdrop-filter: blur(4px);
-      font-size: 0.6rem; color: #fff; padding: 3px 8px; border-radius: 20px;
-      letter-spacing: 1px;
-    }
-    .reel-ig-cta {
-      margin-top: 40px; text-align: center;
-      padding: 28px; border: 1px solid rgba(201,169,110,0.15);
-      background: rgba(201,169,110,0.03);
-    }
-    .reel-ig-cta p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.8; }
-    .reel-ig-cta a { color: var(--gold); text-decoration: none; font-weight: 600; }
-    .reel-ig-cta a:hover { color: var(--gold-light); }
-
-    /* ── 6. VIDEO ── */
-    #video-section { padding: var(--pad); background: var(--cream); }
-    #video-section .section-title { color: var(--dark); }
-    #video-section .section-tag { color: var(--gold-dark); }
-    .video-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr; gap: 30px; align-items: start; }
-    .video-main { border-radius: 4px; overflow: hidden; box-shadow: 0 16px 50px rgba(0,0,0,0.2); }
-    .video-placeholder { aspect-ratio: 16/9; background: #1a1a1a; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; cursor: pointer; position: relative; overflow: hidden; }
-    .video-placeholder img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.45; }
-    .video-play-btn { width: 72px; height: 72px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; transition: transform 0.3s; box-shadow: 0 4px 30px rgba(201,169,110,0.6); }
-    .video-placeholder:hover .video-play-btn { transform: scale(1.1); }
-    .video-play-btn::after { content: ''; width: 0; height: 0; border-style: solid; border-width: 12px 0 12px 22px; border-color: transparent transparent transparent var(--dark); margin-left: 4px; }
-    .video-placeholder-text { position: relative; z-index: 1; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.75); }
-    .video-thumbs { display: flex; flex-direction: column; gap: 14px; }
-    .video-thumb { display: flex; gap: 14px; align-items: center; padding: 14px; background: white; border-radius: 4px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); cursor: pointer; transition: transform 0.2s; border-left: 3px solid transparent; }
-    .video-thumb:hover, .video-thumb.active { transform: translateX(4px); border-left-color: var(--gold); background: #fffdf8; }
-    .video-thumb-img { width: 80px; height: 55px; object-fit: cover; border-radius: 3px; flex-shrink: 0; }
-    .video-thumb-title { font-size: 0.85rem; font-weight: 600; color: var(--dark); margin-bottom: 4px; }
-    .video-thumb-desc { font-size: 0.72rem; color: #888; line-height: 1.5; }
-    .video-thumb-tag { display: inline-block; font-size: 0.6rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-dark); margin-top: 4px; }
-    .video-ig-note { padding: 16px; background: #fff9f0; border-left: 3px solid var(--gold); border-radius: 2px; }
-    .video-ig-note p { font-size: 0.8rem; color: #777; line-height: 1.6; }
-    .video-ig-note a { color: var(--gold-dark); font-weight: 600; }
-
+  
+    
     /* ── 7. PROCESS ── */
     #process { padding: var(--pad); background: var(--cream); border-top: 1px solid rgba(0,0,0,0.07); }
     #process .section-title { color: var(--dark); }
@@ -442,56 +370,13 @@
     }
 
     /* ── LOADER ── */
-    #loader {
-      position: fixed; inset: 0; z-index: 9999;
-      background: #0c0c0c;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-    }
-    #loader.hide { animation: loaderFade 0.8s ease forwards; }
-    #loader.gone { display: none; }
-    @keyframes loaderFade { to { opacity: 0; } }
-    .ld-logo {
-      font-family: 'Great Vibes', cursive;
-      font-size: clamp(3rem, 10vw, 5rem);
-      color: var(--gold);
-      opacity: 0;
-      animation: ldFadeUp 0.9s 0.2s ease both;
-    }
-    .ld-tagline {
-      font-size: 0.72rem; letter-spacing: 3px;
-      text-transform: uppercase; color: var(--text-muted);
-      margin-top: 4px; opacity: 0;
-      animation: ldFadeUp 0.7s 0.5s ease both;
-    }
-    .ld-bar-wrap {
-      width: 120px; height: 1px;
-      background: rgba(201,169,110,0.15);
-      margin-top: 28px; overflow: hidden; opacity: 0;
-      animation: ldFadeUp 0.6s 0.7s ease both;
-    }
-    .ld-bar-fill {
-      height: 100%; width: 0%; background: var(--gold);
-      animation: ldFill 1.8s 0.6s cubic-bezier(.4,0,.2,1) forwards;
-    }
-    @keyframes ldFill { to { width: 100%; } }
-    @keyframes ldFadeUp {
-      from { opacity: 0; transform: translateY(10px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
+    
   </style>
 </head>
 <body>
 
-<!-- ══════════ LOADER ══════════ -->
-<div id="loader">
-  <div class="ld-logo">Qasim</div>
-  <div class="ld-tagline">Home Decoration</div>
-  <div class="ld-bar-wrap"><div class="ld-bar-fill"></div></div>
-</div>
 
-<div id="scroll-progress"></div>
-<div id="section-flash"></div>
+
 
 <!-- ═══ FLOAT WA ═════════════════════════════════════════════ -->
 <a class="float-wa" href="https://wa.me/918175985709" target="_blank" id="floatWa" aria-label="WhatsApp">
@@ -652,14 +537,11 @@ We focus on quality, detail, and your vision to create spaces you’ll enjoy eve
       <span class="section-tag">✦ Our Finished Work</span>
       <h2 class="section-title">Real Projects, <em>Real Homes</em></h2>
       <div class="divider"></div>
-      <p class="section-sub">Each project tells a story of transformation. Browse our photos and watch our reels.</p>
+      <p class="section-sub">Each project tells a story of transformation. Browse our real project photos.</p>
     </div>
 
     <!-- Tabs -->
-    <div class="proj-tabs reveal">
-      <button class="proj-tab active" onclick="switchTab('photos', this)">📸 &nbsp;Photos</button>
-      <button class="proj-tab" onclick="switchTab('videos', this)">🎬 &nbsp;Reels</button>
-    </div>
+    
 
     <!-- ── PHOTOS PANEL ── -->
     <div class="proj-panel active" id="panel-photos">
@@ -709,100 +591,7 @@ We focus on quality, detail, and your vision to create spaces you’ll enjoy eve
     </div>
 
     <!-- ── REELS / VIDEOS PANEL ── -->
-    <div class="proj-panel" id="panel-videos">
-      <div class="proj-reels-grid">
-
-        <!-- Reel 1 -->
-<div class="reel-card reveal" id="reel1">
-  <video 
-    src="videos/reel1.mp4"
-    loop 
-    playsinline 
-    muted
-    preload="metadata">
-  </video>
-
-  <div class="reel-overlay">
-    <div class="reel-cat">Living Room</div>
-    <div class="reel-title">Royal Living</div>
-    <div class="reel-loc">📍 Varanasi</div>
-  </div>
-
-  <div class="reel-play"></div>
-  <div class="reel-duration">0:14</div>
-</div>
-
-
-<!-- Reel 2 -->
-<div class="reel-card reveal" id="reel2">
-  <video 
-    src="videos/reel2.mp4"
-    loop 
-    playsinline 
-    muted
-    preload="metadata">
-  </video>
-
-  <div class="reel-overlay">
-    <div class="reel-cat">Kitchen</div>
-    <div class="reel-title">Modular Kitchen</div>
-    <div class="reel-loc">📍 Mau</div>
-  </div>
-
-  <div class="reel-play"></div>
-  <div class="reel-duration">0:41</div>
-</div>
-
-
-<!-- Reel 3 -->
-<div class="reel-card reveal" id="reel3">
-  <video 
-    src="videos/reel3.mp4"
-    loop 
-    playsinline 
-    muted
-    preload="metadata">
-  </video>
-
-  <div class="reel-overlay">
-    <div class="reel-cat">Bedroom</div>
-    <div class="reel-title">Luxury Bedroom Tour</div>
-    <div class="reel-loc">📍 Lucknow</div>
-  </div>
-
-  <div class="reel-play"></div>
-  <div class="reel-duration">0:47</div>
-</div>
-
-
-<!-- Reel 4 -->
-<div class="reel-card reveal" id="reel4">
-  <video 
-    src="videos/reel4.mp4"
-    loop 
-    playsinline 
-    muted
-    preload="metadata">
-  </video>
-
-  <div class="reel-overlay">
-    <div class="reel-cat">Full Home</div>
-    <div class="reel-title">Modern & Luxury Home</div>
-    <div class="reel-loc">📍 Azamgarh</div>
-  </div>
-
-  <div class="reel-play"></div>
-  <div class="reel-duration">0:17</div>
-</div>
-
-      </div>
-
-      <!-- Instagram CTA -->
-      <div class="reel-ig-cta reveal">
-        <p>📱 <strong style="color:var(--gold);">More reels on Instagram!</strong><br>
-        Follow <a href="https://www.instagram.com/qasim_home_decoration1" target="_blank">@qasim_home_decoration1</a> for daily design reels, project tours & behind-the-scenes content.</p>
-      </div>
-    </div>
+    
 
   </div>
 </section>
